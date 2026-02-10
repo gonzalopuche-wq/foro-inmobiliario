@@ -6,5 +6,4 @@
     password: ${{ secrets.FTP_PASSWORD }}
     local-dir: ./
     server-dir: ${{ secrets.FTP_TARGET }}
-          local-dir: ./
-          server-dir: ${{ secrets.FTP_TARGET }}
+            server-dir: ${{ secrets.FTP_TARGET }}

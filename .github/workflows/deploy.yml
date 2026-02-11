@@ -1,4 +1,4 @@
-name: Deploy Foro Inmobiliario (SFTP)
+name: Deploy Foro Inmobiliario
 
 on:
   push:
@@ -10,14 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy via SFTP (DonWeb)
-        uses: appleboy/scp-action@v0.1.7
+      - name: Subir web a DonWeb (FTP)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          host: ${{ secrets.SFTP_HOST }}
-          username: ${{ secrets.SFTP_USERNAME }}
-          password: ${{ secrets.SFTP_PASSWORD }}
-          source: "."
-          target: ${{ secrets.SFTP_TARGET }}
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          local-dir: ./
+          server-dir: public_html/
